@@ -158,10 +158,10 @@ impl SupportedCipherSuite {
 
 /// A list of all the cipher suites supported by rustls.
 pub static ALL_CIPHER_SUITES: &[SupportedCipherSuite] = &[
-    // // TLS1.3 suites TODO(WJ 2024-11-21): Right now we toggle our version just by commmenting this line, not ideal. Once toggled need to rebuild notary.
+    #[cfg(not(feature = "chacha20"))]
     TLS13_AES_128_GCM_SHA256,
     #[cfg(feature = "chacha20")]
-    TLS13_CHACHA20_POLY1305_SHA256, 
+    TLS13_CHACHA20_POLY1305_SHA256,
 ];
 
 /// The cipher suite configuration that an application should use by default.
