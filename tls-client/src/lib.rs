@@ -355,8 +355,10 @@ pub use crate::{
     key_log_file::KeyLogFile,
     kx::{SupportedKxGroup, ALL_KX_GROUPS},
 };
+pub use backend::Decrypter;
 pub use backend::{
-    mode::Backend, mode::BackendError, mode::DecryptMode, mode::EncryptMode, RustCryptoBackend13, CipherSuiteKey
+    mode::Backend, mode::BackendError, mode::DecryptMode, mode::EncryptMode, CipherSuiteKey,
+    RustCryptoBackend13,
 };
 pub use cipher::{MessageDecrypter, MessageEncrypter};
 pub use tls_core::{
@@ -368,7 +370,6 @@ pub use tls_core::{
     suites::{SupportedCipherSuite, ALL_CIPHER_SUITES},
     versions::{SupportedProtocolVersion, ALL_VERSIONS},
 };
-pub use backend::Decrypter;
 
 /// Items for use in a client.
 pub mod client {
@@ -443,5 +444,5 @@ pub trait Session = Connection;
 */
 
 pub mod origo {
-    pub use crate::backend::origo::{OrigoConnection, WitnessData};
+    pub use crate::backend::origo::{DecryptChunk, OrigoConnection, WitnessData};
 }
